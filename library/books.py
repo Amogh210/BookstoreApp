@@ -8,7 +8,7 @@ def add_book(
     """Insert a book and return its new id."""
     if price < 0:
         raise ValueError("price must be non-negative")
-    if stock < 0:
+    if stock < 1:
         raise ValueError("stock must be non-negative")
     cur = conn.execute(
         "INSERT INTO books (title, author, price, stock) VALUES (?, ?, ?, ?)",
