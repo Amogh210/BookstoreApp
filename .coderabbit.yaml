@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit configuration for the demo repo.
+language: "en-US"
+
+reviews:
+  profile: "assertive"          # more detailed feedback (good for a demo); "chill" is quieter
+  high_level_summary: true      # AI summary at the top of the PR
+  poem: true                    # the fun little poem in the walkthrough
+  review_status: true
+  collapse_walkthrough: false   # keep the walkthrough table expanded
+  sequence_diagrams: true
+  auto_review:
+    enabled: true
+    drafts: false
+  path_instructions:
+    - path: "library/**/*.py"
+      instructions: |
+        This is production code. Always use parameterized SQL queries.
+        Flag hardcoded secrets, weak password hashing, and missing input validation.
+        Public functions should have type hints and a short docstring.
+    - path: "tests/**/*.py"
+      instructions: |
+        Tests use pytest. Check that new public functions have tests,
+        including edge cases (empty input, zero, negative numbers).
+  tools:
+    ruff:
+      enabled: true
+
+chat:
+  auto_reply: true
